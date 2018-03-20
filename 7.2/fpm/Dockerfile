@@ -7,8 +7,9 @@ LABEL maintainer="mingpeng16@gmail.com"
 ARG ALPINE_URL=dl-cdn.alpinelinux.org
 
 # Add timezone support
+# --no-cache: This avoids the need to use --update and remove /var/cache/apk/* when done installing packages.
 RUN sed -i "s:dl-cdn.alpinelinux.org:${ALPINE_URL}:g" /etc/apk/repositories \
-    && apk add --update --no-cache tzdata \
+    && apk add --no-cache tzdata \
         freetype \
         libjpeg-turbo \
         libpng \
@@ -31,8 +32,7 @@ RUN sed -i "s:dl-cdn.alpinelinux.org:${ALPINE_URL}:g" /etc/apk/repositories \
         --with-png-dir=/usr/include/ \
     && docker-php-ext-install -j${NPROC} gd \
     && apk del .build-deps \
-    && rm -rf /tmp/* \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /tmp/*
 
 ARG TZ
 
