@@ -4,7 +4,7 @@ This PHP image is based on official [ `php:alpine`](https://hub.docker.com/_/php
 
 ## Supported tags
 
-- [`7.2-fpm-alpine`](7.2/fpm/Dockerfile)
+- [`7.2-fpm-alpine`](https://github.com/MilesPong/docker-php/blob/master/7.2/fpm/Dockerfile)
 
 ## Extensions
 
