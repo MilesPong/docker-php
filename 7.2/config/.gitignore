@@ -1,0 +1,5 @@
+*
+!opcache-recommended.ini
+!/templates
+!/templates/*
+!.gitignore

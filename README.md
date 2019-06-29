@@ -76,3 +76,23 @@ Zend OPcache
 | Key | Description | Example |
 |--|--|--|
 | `TZ` | Timezone | `UTC` |
+
+## Docker compose
+
+Now we use php as a seperate docker service via docker compose. Since the external named network is defined, it's easy to 'join' with other docker services such as `nginx`, `mysql` and so on.
+
+From the beginning, prepare some config file as follow,
+
+```bash
+cp 7.2/config/templates/php.ini.production 7.2/config/php.ini
+cp 7.2/config/templates/php-fpm.conf.default 7.2/config/php-fpm.conf
+cp 7.2/config/templates/www.conf.default 7.2/config/www.conf
+```
+
+Then modify above files depends on your condition.
+
+```bash
+cp .env.example .env
+docker network create php-network
+docker-compose up -d
+```

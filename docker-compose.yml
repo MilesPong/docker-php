@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  php:
+    build:
+      context: ./${PHP_VERSION}/fpm
+      args:
+        ALPINE_URL: ${ALPINE_URL}
+    image: milespeng/php:${PHP_VERSION}-fpm-alpine
+    networks:
+      - php
+    volumes:
+      - '${CODE_PATH}:${CODE_PATH}'
+      - ./${PHP_VERSION}/config/php.ini:/usr/local/etc/php/php.ini
+      - ./${PHP_VERSION}/config/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./${PHP_VERSION}/config/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./${PHP_VERSION}/config/opcache-recommended.ini:/usr/local/etc/php/conf.d/opcache-recommended.ini
+
+networks:
+  php:
+    external: true
+    name: ${PHP_NETWORK}
