@@ -7,7 +7,8 @@ services:
         ALPINE_URL: ${ALPINE_URL}
     image: milespeng/php:${PHP_VERSION}-fpm-alpine
     networks:
-      - php
+      - frontend
+      - backend
     volumes:
       - '${CODE_PATH}:${CODE_PATH}'
       - ./${PHP_VERSION}/config/php.ini:/usr/local/etc/php/php.ini
@@ -16,6 +17,9 @@ services:
       - ./${PHP_VERSION}/config/opcache-recommended.ini:/usr/local/etc/php/conf.d/opcache-recommended.ini
 
 networks:
-  php:
+  frontend:
     external: true
-    name: ${PHP_NETWORK}
+    name: ${FRONTEND_NETWORK}
+  backend:
+    external: true
+    name: ${BACKEND_NETWORK}
