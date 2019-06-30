@@ -93,6 +93,7 @@ Then modify above files depends on your condition.
 
 ```bash
 cp .env.example .env
-docker network create php-network
+docker network create frontend-network
+docker network create backend-network
 docker-compose up -d
 ```
