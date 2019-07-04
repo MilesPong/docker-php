@@ -5,6 +5,7 @@ services:
       context: ./${PHP_VERSION}/fpm
       args:
         ALPINE_URL: ${ALPINE_URL}
+        TZ: ${TZ}
     image: milespeng/php:${PHP_VERSION}-fpm-alpine
     networks:
       - frontend
